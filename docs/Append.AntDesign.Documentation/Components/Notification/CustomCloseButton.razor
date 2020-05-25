@@ -1,0 +1,25 @@
+﻿@inject NotificationService NotificationService
+
+<Codebox Title="Custom close button">
+    <Description>
+        <p>
+            You can add a custom close button by setting the <code>CloseButton</code> parameter.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+    </Demo>
+</Codebox>
+@code{
+    private string key = Guid.NewGuid().ToString();
+    private void showNotification()
+    {
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetMessage("Notification Title")
+                                        .SetKey(key)
+                                        .SetDescription("A function will be be called after the notification is closed (automatically after the \"duration\" time has expired or manually by clicking the close button).")
+                                        .SetOnClose(() => System.Diagnostics.Debug.WriteLine("Notification has closed"))
+                                        .SetCloseButton(@<Button Type="ButtonType.Primary" Size="Size.Small" OnClick="() => NotificationService.Close(key)" Label="Confirm" />)
+.Build());
+}
+}
