@@ -1,0 +1,58 @@
+﻿<Codebox Title="Navigation steps">
+    <Description>
+        <p>
+            Navigation steps.
+        </p>
+    </Description>
+    <Demo>
+        <div>
+            <Steps Type=StepsType.Navigation
+                   Size=StepsSize.Small
+                   Current=@thisCurrent
+                   OnChange=OnChange
+                   class="site-navigation-steps">
+                <Step Title="Step 1"
+                      SubTitle="00:00:05"
+                      Status=StepsStatus.Finish
+                      Description="This is a description." />
+                <Step Title="Step 2"
+                      SubTitle="00:01:02"
+                      Status=StepsStatus.Process
+                      Description="This is a description." />
+                <Step Title="Step 3"
+                      SubTitle="waiting for longlong time"
+                      Status=StepsStatus.Wait
+                      Description="This is a description." />
+            </Steps>
+            <Steps Type=StepsType.Navigation
+                   Current=@thisCurrent
+                   OnChange=OnChange
+                   class="site-navigation-steps">
+                <Step Status=StepsStatus.Finish Title="Step 1" />
+                <Step Status=StepsStatus.Process Title="Step 2" />
+                <Step Status=StepsStatus.Wait Title="Step 3" />
+                <Step Status=StepsStatus.Wait Title="Step 4" />
+            </Steps>
+            <Steps Type=StepsType.Navigation
+                   Size=StepsSize.Small
+                   Current=@thisCurrent
+                   OnChange=OnChange
+                   class="site-navigation-steps">
+                <Step Status=StepsStatus.Finish Title="finish 1" />
+                <Step Status=StepsStatus.Finish Title="finish 2" />
+                <Step Status=StepsStatus.Process Title="current process" />
+                <Step Status=StepsStatus.Wait Title=Wait Disabled />
+            </Steps>
+        </div>
+    </Demo>
+</Codebox>
+
+
+@code{
+    private int thisCurrent { get; set; } = 0;
+    private void OnChange(int current)
+    {
+        thisCurrent = current;
+        StateHasChanged();
+    }
+}

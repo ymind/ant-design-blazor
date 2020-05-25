@@ -1,0 +1,70 @@
+﻿<Codebox Title="Switch Step">
+    <Description>
+        <p>
+            Cooperate with the content and buttons, to represent the progress of a process.
+        </p>
+    </Description>
+    <Demo>
+        <div>
+            <Steps Current=@current>
+                @foreach (KeyValuePair<int, string> item in stepsTitle)
+                {
+                    <Step @key=item Title=@item.Value SubTitle=@doneString/>
+                }
+            </Steps>
+            <div class="steps-content">@steps[current]</div>
+            <div class="steps-action">
+                @if (current < steps.Count - 1)
+                {
+                    <Button Type=ButtonType.Primary OnClick=Next Label="Next"/>
+                }
+                @if (current == steps.Count - 1)
+                {
+                    <Button Type=ButtonType.Primary OnClick=OnClick Label="Done"/>
+                }
+                @if (current > 0)
+                {
+                    <Button style="margin: 0 8px" OnClick=Prev Label="Previous"/>
+                }
+            </div>
+        </div>
+    </Demo>
+</Codebox>
+@code{
+    private IDictionary<int, string> steps = new Dictionary<int, string>()
+                                    {
+                                                {0,"First-content"},
+                                                {1, "Second-content"},
+                                                {2,"Last-content"}
+                                            };
+    private IDictionary<int, string> stepsTitle = new Dictionary<int, string>()
+                                    {
+                                                {0,"First"},
+                                                {1, "Second"},
+                                                {2,"Last"}
+                                            };
+
+    private int current = 0;
+    private string doneString = string.Empty;
+    private void Next()
+    {
+        current = current + 1;
+    }
+
+    private void Prev()
+    {
+        current = current - 1;
+        if (!string.IsNullOrEmpty(doneString))
+        {
+            doneString = string.Empty;
+        }
+    }
+    private void OnClick()
+    {
+        //show notification that processing is complete!
+        //wait until notification component is done
+        //for now just add subtitle
+        doneString = "Processing complete!";
+        StateHasChanged();
+    }
+}
