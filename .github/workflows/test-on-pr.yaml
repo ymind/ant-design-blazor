@@ -1,4 +1,4 @@
-name: Test and Build
+name: Test on pr
 on: 
     pull_request:
         branches: 
@@ -16,7 +16,4 @@ jobs:
         - name: Test/Build with dotnet
           env:
               MSBUILDDISABLENODEREUSE: 1
-          run: |
-                  cp -rfv infrastructure/. ./docs/Append.AntDesign.Documentation.Standalone/wwwroot
-                  dotnet test
-                  dotnet build
+          run:    dotnet test
