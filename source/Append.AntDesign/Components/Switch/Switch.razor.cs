@@ -27,6 +27,7 @@ namespace Append.AntDesign.Components
         private void OnClicked(MouseEventArgs e)
         {
             InverseCheckedField();
+            OnChanged(null);
             OnClick.InvokeAsync(_checked);
         }
 
