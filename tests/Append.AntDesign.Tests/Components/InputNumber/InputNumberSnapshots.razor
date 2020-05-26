@@ -1,33 +1,33 @@
 ﻿@inherits TestComponentBase
-@*
-    <SnapshotTest Description="Basic" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
-        <TestInput>
-            <InputNumber Min=1 Max=10 DefaultValue=3 />
-        </TestInput>
-        <ExpectedOutput>
-            <div class="ant-input-number">
-                <div class="ant-input-number-handler-wrap">
-                    <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
-                        <span role="img" aria-label="up" class="ant-input-number-handler-up-inner anticon anticon-up">
-                            <svg diff:ignore>
-                            </svg>
-                        </span>
-                    </span>
-                    <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
-                        <span role="img" aria-label="down" class="ant-input-number-handler-down-inner anticon anticon-down">
-                            <svg diff:ignore>
-                            </svg>
-                        </span>
-                    </span>
-                </div>
-                <div class="ant-input-number-input-wrap">
-                    <input role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" class="ant-input-number-input" autocomplete="off" max="10" min="1" step="1" value="3">
-                </div>
-            </div>
-        </ExpectedOutput>
-    </SnapshotTest>
 
-    <SnapshotTest Description="Decimals" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Basic" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <InputNumber Min=1 Max=10 DefaultValue=3 />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-input-number">
+            <div class="ant-input-number-handler-wrap">
+                <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
+                    <span role="img" aria-label="up" class="ant-input-number-handler-up-inner anticon anticon-up">
+                        <svg diff:ignore>
+                        </svg>
+                    </span>
+                </span>
+                <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
+                    <span role="img" aria-label="down" class="ant-input-number-handler-down-inner anticon anticon-down">
+                        <svg diff:ignore>
+                        </svg>
+                    </span>
+                </span>
+            </div>
+            <div class="ant-input-number-input-wrap">
+                <input role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" class="ant-input-number-input" autocomplete="off" max="10" min="1" step="1" value="3">
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+@*
+    <SnapshotTest Description="Decimals" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
         <TestInput>
             <InputNumber Min=0 Max=10 Step=0.1 />
         </TestInput>
@@ -54,7 +54,7 @@
         </ExpectedOutput>
     </SnapshotTest>
 
-    <SnapshotTest Description="Disabled" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <SnapshotTest Description="Disabled" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
         <TestInput>
             <div>
                 <InputNumber Min=1 Max=10 Disabled=@disabled DefaultValue=3 />
@@ -99,7 +99,7 @@
         </ExpectedOutput>
     </SnapshotTest>
 
-    <SnapshotTest Description="Formatter" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <SnapshotTest Description="Formatter" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
         <TestInput>
             @using System.Text.RegularExpressions;
 
@@ -151,7 +151,7 @@
                         </span>
                     </div>
                     <div class="ant-input-number-input-wrap">
-                        <input role="spinbutton" aria-valuemin="-∞" aria-valuemax="∞" aria-valuenow="1000" class="ant-input-number-input" autocomplete="off" min="-∞" max="∞" step="1" value="$ 1,000">
+                        <input role="spinbutton" aria-valuemin="-Infinity" aria-valuemax="Infinity" aria-valuenow="1000" class="ant-input-number-input" autocomplete="off" min="-Infinity" max="Infinity" step="1" value="$ 1,000">
                     </div>
                 </div>
                 <div class="ant-input-number">
@@ -178,7 +178,7 @@
     </SnapshotTest>
 
 
-    <SnapshotTest Description="Sizes" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <SnapshotTest Description="Sizes" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
         <TestInput>
             <div class="site-input-number-wrapper">
                 <InputNumber DefaultValue=3 Min=1 Max=100000 Size=@InputSize.Large />

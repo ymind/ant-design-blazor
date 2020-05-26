@@ -10,7 +10,7 @@
 </SnapshotTest>
 
 
-<SnapshotTest Description="InputClearWithIcon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="InputClearWithIcon" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Input AllowClear placeholder="Input with clear icon" />
     </TestInput>
@@ -26,7 +26,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="TextAreaClearWithIcon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="TextAreaClearWithIcon" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <TextArea AllowClear placeholder="Textarea with clear icon" />
     </TestInput>
@@ -43,7 +43,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="SearchLoadingIcon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="SearchLoadingIcon" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Search placeholder="input search loading deault" Loading />
     </TestInput>
@@ -60,7 +60,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="SearchLoadingEnterButton" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="SearchLoadingEnterButton" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Search placeholder="input search loading with enterButton" Loading EnterButton="" />
     </TestInput>
@@ -83,7 +83,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="InputSizeSmall" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="InputSizeSmall" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Input Size="InputSize.Small" placeholder="large size" PrefixIcon="@IconType.Outlined.User" />
     </TestInput>
@@ -101,7 +101,7 @@
 </SnapshotTest>
 
 
-<SnapshotTest Description="InputSizeDefault" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="InputSizeDefault" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Input placeholder="default size" PrefixIcon="@IconType.Outlined.User" />
     </TestInput>
@@ -119,7 +119,7 @@
 </SnapshotTest>
 
 
-<SnapshotTest Description="InputSizeLarge" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="InputSizeLarge" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Input Size="InputSize.Large" placeholder="small size" PrefixIcon="@IconType.Outlined.User" />
     </TestInput>

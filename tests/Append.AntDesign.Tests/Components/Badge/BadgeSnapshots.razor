@@ -89,7 +89,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="DotCount0Invisble" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="DotCount0Invisble" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Badge Count="0" Dot>
             <Icon Type="IconType.Outlined.Notification"></Icon>

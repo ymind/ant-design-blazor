@@ -50,7 +50,7 @@
 </SnapshotTest>
 
 
-<SnapshotTest Description="LoadingState" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="LoadingState" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Tag Color="#55acee">
             <Icon Type="IconType.Outlined.Twitter" />
@@ -81,7 +81,7 @@
 </SnapshotTest>
 
 
-<SnapshotTest Description="StatusWithIcon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="StatusWithIcon" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Tag Color="processing">
             <Icon Type="IconType.Outlined.Sync" Spin />

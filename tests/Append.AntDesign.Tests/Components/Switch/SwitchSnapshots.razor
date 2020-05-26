@@ -23,7 +23,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="LoadingState" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="LoadingState" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Switch Loading DefaultChecked />
     </TestInput>
@@ -50,7 +50,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="ChildIcon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="ChildIcon" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Switch CheckedChildIconType="IconType.Outlined.Check" UnCheckedChildIconType="IconType.Outlined.Close" DefaultChecked />
     </TestInput>

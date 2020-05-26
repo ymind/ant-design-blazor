@@ -1,5 +1,5 @@
 ﻿@inherits TestComponentBase
-<SnapshotTest Description="Success" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Success" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Result Status="ResultStatus.Success">
             <Title>Successfully Purchased Cloud Server ECS!</Title>
@@ -30,7 +30,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="500" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="500" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Result Status="ResultStatus.BadRequest_500">
             <Title>500</Title>

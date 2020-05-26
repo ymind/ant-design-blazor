@@ -1,6 +1,6 @@
 ﻿@inherits TestComponentBase
 
-<SnapshotTest Description="Basic" Setup="@(() => Services.AddAntDesign())">
+<SnapshotTest Description="Basic" Setup="@((SnapshotTest test) => test.Services.AddAntDesign())">
     <TestInput>
         <Title>Introduction</Title>
         <Paragraph>
@@ -129,7 +129,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="TitleComponent" Setup="@(() => Services.AddAntDesign())">
+<SnapshotTest Description="TitleComponent" Setup="@((SnapshotTest test) => test.Services.AddAntDesign())">
     <TestInput>
         <Title>h1. Ant Design</Title>
         <Title Level="TypographyTitleLevel.H2">h2. Ant Design</Title>
@@ -144,7 +144,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="TextComponent" Setup="@(() => Services.AddAntDesign())">
+<SnapshotTest Description="TextComponent" Setup="@((SnapshotTest test) => test.Services.AddAntDesign())">
     <TestInput>
         <div>
             <Text>Ant Design</Text>

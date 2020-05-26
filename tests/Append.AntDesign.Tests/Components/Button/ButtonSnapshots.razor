@@ -15,7 +15,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Actions" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Actions" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <p>Current Count: @counter</p>
         <Button Type="@ButtonType.Primary" Label="Count Up" OnClick="CountUp" Loading="isLoading">
@@ -211,7 +211,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Icons" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Icons" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Button Type="ButtonType.Primary" Shape="ButtonShape.Circle">
             <Icon Type="IconType.Outlined.Search" />
@@ -315,7 +315,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Loading" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Loading" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Button Type="ButtonType.Primary" Loading Label="Loading" />
         <Button Type="ButtonType.Primary" Size="Size.Small" Loading Label="Loading" />
@@ -425,7 +425,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Sizes" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Sizes" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Button Type="ButtonType.Primary" Size="Size.Large" Label="Large Primary" />
         <Button Type="ButtonType.Default" Size="Size.Large" Label="Large Default" />

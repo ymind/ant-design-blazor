@@ -74,9 +74,9 @@
 @code{
     MockJsRuntimeInvokeHandler MockJsRuntime { get; set; } = default!;
 
-    private void SetupMocking()
+    private void SetupMocking(SnapshotTest test)
     {
-        Services.AddSingleton<IIconService, IconServiceMock>();
-        Services.AddMockJsRuntime();
+        test.Services.AddSingleton<IIconService, IconServiceMock>();
+        test.Services.AddMockJsRuntime();
     }
 }

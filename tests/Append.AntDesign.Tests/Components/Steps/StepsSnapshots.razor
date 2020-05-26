@@ -1,6 +1,6 @@
 ﻿@inherits TestComponentBase
 
-<SnapshotTest Description="Basic" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Basic" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Steps Current=1>
             <Step Title="Finished" Description="This is a description." />
@@ -163,7 +163,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Customized Dot Style" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Customized Dot Style" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Steps Current=1>
             <ProgressDot>
@@ -356,7 +356,7 @@
 
 
 
-<SnapshotTest Description="Error" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Error" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Steps Status=StepsStatus.Error Current=1>
             <Step Title="Finished" Description="This is a description." />
@@ -405,7 +405,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Icon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Icon" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Steps>
             <Step Status=StepsStatus.Finish Title="Login" Icon=IconType.Outlined.User />
@@ -471,7 +471,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Navigation steps" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Navigation steps" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <div>
             <Steps Type=StepsType.Navigation
@@ -670,7 +670,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Mini Version" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Mini Version" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Steps Size=StepsSize.Small Current=1>
             <Step Title="Finished" />
@@ -827,7 +827,7 @@
 </SnapshotTest>
 
 
-<SnapshotTest Description="Vertical"  Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Vertical"  Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Steps Direction=StepsDirection.Vertical Current=1>
             <Step Title="Finished" Description="This is a description." />
@@ -878,7 +878,7 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="Vertical mini version" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+<SnapshotTest Description="Vertical mini version" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Steps Current=1 Direction=StepsDirection.Vertical Size=StepsSize.Small>
             <Step Title="Finished" Description="This is a description." />
