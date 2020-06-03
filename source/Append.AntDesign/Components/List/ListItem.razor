@@ -1,0 +1,13 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<li class="@classes">
+    @if (Actions.Count != 0 || Extra != null)
+    {
+        @GenerateMainContent();
+    }
+    else
+    {
+        @ChildContent
+    }
+</li>
