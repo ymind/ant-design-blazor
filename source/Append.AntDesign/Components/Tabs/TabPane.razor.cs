@@ -78,8 +78,8 @@ namespace Append.AntDesign.Components
                     async (e) => { 
                         Tabs._currentKey = Key;
                         await Tabs.SetInkBarStyle();
-                        Tabs.OnChange.InvokeAsync(Key);
-                        Tabs.OnTabClick.InvokeAsync(Key);
+                        await Tabs.OnChange.InvokeAsync(Key);
+                        await Tabs.OnTabClick.InvokeAsync(Key);
                     }));
                 builder.AddElementReferenceCapture(9, (_value) => { tabPaneRef = _value; });
                 builder.AddContent(10, Tab);
