@@ -28,5 +28,5 @@
 | Options | set children optional | List<RadioGroupOption> |  |
 | Size | size for the radio button style, can be set to `RadioButtonSize.Small`, `RadioButtonSize.Middle` or `RadioButtonSize.Large` | `RadioButtonSize` | `RadioButtonSize.Middle` |
 | Value | Used for setting the currently selected value. | string |  |
-| OnChange | The callback function that is triggered when the state changes. | `EventCallback<bool>` |  |
+| OnChange | The callback function that is triggered when the state changes. | `EventCallback<string>` |  |
 | ButtonStyle | style type of the radio button, can be set to `RadioButtonStyle.Outline` or `RadioButtonStyle.Solid` | `RadioButtonStyle` | `RadioButtonStyle.Outline` |
