@@ -45,12 +45,13 @@ namespace Append.AntDesign.Components
 
         [CascadingParameter] public Tabs Tabs { get; set; }
 
+
         protected override async void OnAfterRender(bool firstRender)
         {
             base.OnAfterRender(firstRender);
             if (firstRender)
             {
-                await Tabs.SetInkBarStyle();
+                 await Tabs.SetInkBarStyle();
             }      
         }
 
@@ -76,12 +77,14 @@ namespace Append.AntDesign.Components
                     builder.AddAttribute(7, "disabled", true);
                 builder.AddAttribute(8, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this,
                     async (e) => { 
-                        Tabs._currentKey = Key;
+                        Tabs._currentKey = Key;  
                         await Tabs.SetInkBarStyle();
                         await Tabs.OnChange.InvokeAsync(Key);
-                        await Tabs.OnTabClick.InvokeAsync(Key);
+                        await Tabs.OnTabClick.InvokeAsync(Key);              
                     }));
-                builder.AddElementReferenceCapture(9, (_value) => { tabPaneRef = _value; });
+                builder.AddElementReferenceCapture(9, (_value) => {  
+                    tabPaneRef = _value;         
+                });
                 builder.AddContent(10, Tab);
                 
                 builder.CloseElement();
@@ -90,6 +93,7 @@ namespace Append.AntDesign.Components
 
         public RenderFragment GetTabConcent()
         {
+                     
             return builder =>
             {
                 builder.OpenElement(0, "div");
@@ -98,14 +102,27 @@ namespace Append.AntDesign.Components
                 builder.AddAttribute(2, "role", "tabpanel");
                 builder.AddAttribute(5, "class", contentClasses);
                 builder.AddAttribute(6, "style", contentStyles);
-                builder.AddContent(7, ChildContent);
+
+                if (Tabs.ForceRender)
+                {
+                    builder.AddContent(7, ChildContent);
+                }                   
+                else
+                {
+                    if (tabIsActive)
+                    {
+                        builder.AddContent(7, ChildContent);
+                    }         
+                }                                
                 builder.CloseElement();
             };
         }
 
         public async Task<Dimension> GetDimensions()
         {
+
             return await tabPaneRef.GetDimension(jsRuntime);
+                    
         }
     }
 }

@@ -66,9 +66,10 @@ namespace Append.AntDesign.Components
             {
                 builder.OpenComponent<ListItem>(0);
                 builder.SetKey(GetKey(item) ?? (object)item);
-                builder.AddAttribute(1, "ChildContent", (RenderFragment)((builder2) =>
+                builder.AddAttribute(1, "style", Style);
+                builder.AddAttribute(2, "ChildContent", (RenderFragment)((builder2) =>
                 {
-                    builder2.AddContent(2, item.ToString());
+                    builder2.AddContent(3, item.ToString());
                 }));
                 builder.CloseComponent();
             };

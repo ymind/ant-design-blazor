@@ -31,10 +31,11 @@ namespace Append.AntDesign.Components
 
         [Parameter] public string ActiveKey { get; set; }
         [Parameter] public string DefaultActiveKey { get; set; }
+        [Parameter] public bool ForceRender { get; set; }
         [Parameter] public TabsSize Size { get; set; }
         [Parameter] public int TabBarGutter { get; set; }
         [Parameter] public TabDirection TabPosition { get; set; } = TabDirection.Top;
-       
+        
         [Parameter] public RenderFragment TabBarExtraContent { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
 
@@ -53,6 +54,18 @@ namespace Append.AntDesign.Components
                 .AddStyle(leftOrRight);
 
             StateHasChanged();
+        }
+
+
+
+        protected override async void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            if (firstRender)
+            {            
+                await Task.Delay(10);
+                await SetInkBarStyle();
+            }
         }
 
         private async Task<string> CalculateLeftOrRight()
@@ -117,8 +130,7 @@ namespace Append.AntDesign.Components
             base.OnParametersSet();
             _currentKey = ActiveKey ?? DefaultActiveKey;
         }
-
-      
+     
     }
 
     internal class TabsParametersDTO

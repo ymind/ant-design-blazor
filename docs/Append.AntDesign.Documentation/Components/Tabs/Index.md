@@ -20,10 +20,11 @@ Ant Design has 3 types of Tabs for different situations.
 | OnTabClick | Callback executed when tab is clicked | EventCallback<`string`> |  |  |
 
 
-### Tabs.TabPane
+### TabsTabPane
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| ForceRender | PreRenders all the tabpanes | bool | false |
 | Key | TabPane's key | string | - |
 | Tab | Show text in TabPane's head | Renderfragment |  |
 

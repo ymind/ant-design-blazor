@@ -18,7 +18,7 @@
         </Tabs>
         <br />
         <br />
-        <Tabs DefaultActiveKey="A" Size="TabsSize.Large" OnChange="OnChange" OnTabClick="OnTabClicked">
+        <Tabs DefaultActiveKey="A" Size="TabsSize.Large">
             <TabPane Tab="tabA" Key="A">
                 Content of Tab Pane A
             </TabPane>
