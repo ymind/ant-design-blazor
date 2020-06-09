@@ -33,7 +33,7 @@ namespace Append.AntDesign.Components
 
         private void InverseCheckedField()
         {
-            _checked = Checked ?? !_checked;
+            _checked = !_checked;
         }
 
         private void CheckContradictingParameters()
@@ -76,6 +76,15 @@ namespace Append.AntDesign.Components
         {
             CheckContradictingParameters();
             _checked = Checked ?? DefaultChecked;
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            if(Checked != null)
+            {
+                _checked = Checked.Value;
+            }
         }
     }
 
