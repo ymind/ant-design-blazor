@@ -5,6 +5,6 @@
         /// <summary>
         /// Width in percents
         /// </summary>
-        public int width { get; set; } = 100;
+        public int width { get; set; } = 38;
     }
 }
