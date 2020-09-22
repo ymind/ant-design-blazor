@@ -1,0 +1,27 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<div class="@classes">
+    <div class="ant-skeleton-header">
+        @if (avatar != null)
+        {
+            <span class="@avatarClasses"></span>
+        }
+    </div>
+    <div class="ant-skeleton-content">
+        <h3 class="ant-skeleton-title" style="width: 38%;"></h3>
+        <ul class="ant-skeleton-paragraph">
+            @for (var row = 0; row < paragraph.rows; row++)
+            {
+                if (row == paragraph.rows - 1)
+                {
+                    <li style="width: 61%;"></li>
+                }
+                else
+                {
+                    <li></li>
+                }
+            }
+        </ul>
+    </div>
+</div>
