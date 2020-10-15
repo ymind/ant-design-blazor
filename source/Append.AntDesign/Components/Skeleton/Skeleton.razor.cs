@@ -9,27 +9,45 @@ namespace Append.AntDesign.Components
 
         private ClassBuilder classes => ClassBuilder.Create(Class)
             .AddClass(prefix)
-            .AddClassWhen($"{prefix}-active", active || loading);
+            .AddClassWhen($"{prefix}-active", Active || Loading);
 
         private ClassBuilder avatarClasses => ClassBuilder.Create(Class)
             .AddClass($"{prefix}-avatar")
-            .AddClassWhen($"{prefix}-avatar-lg", avatar != null && avatar.size == SkeletonAvatarSize.Large)
-            .AddClassWhen($"{prefix}-avatar-sm", avatar != null && avatar.size == SkeletonAvatarSize.Small)
-            .AddClassWhen($"{prefix}-avatar-circle", avatar != null && (avatar.shape == SkeletonAvatarShape.Circle || avatar.shape == SkeletonAvatarShape.Default))
-            .AddClassWhen($"{prefix}-avatar-square", avatar != null && avatar.shape == SkeletonAvatarShape.Square);
+            .AddClassWhen($"{prefix}-avatar-lg", Avatar != null && Avatar.Size == SkeletonAvatarSize.Large)
+            .AddClassWhen($"{prefix}-avatar-sm", Avatar != null && Avatar.Size == SkeletonAvatarSize.Small)
+            .AddClassWhen($"{prefix}-avatar-circle", Avatar != null && (Avatar.Shape == SkeletonAvatarShape.Circle || Avatar.Shape == SkeletonAvatarShape.Default))
+            .AddClassWhen($"{prefix}-avatar-square", Avatar != null && Avatar.Shape == SkeletonAvatarShape.Square);
 
         private ClassBuilder titleClasses => ClassBuilder.Create(Class)
             .AddClass($"{prefix}-title");
 
         private StyleBuilder titleStyles => StyleBuilder.Create(Style)
-            .AddStyleWhen($"width: {title.width}%;", title.width > 0 && title.width <= 100);
+            .AddStyleWhen($"width: {Title.Width}%;", Title.Width > 0 && Title.Width <= 100);
 
-        [Parameter] public bool active { get; set; } = false;
-        [Parameter] public SkeletonAvatarProps avatar { get; set; } = null;
+        /// <summary>
+        /// Show animation effect
+        /// </summary>
+        [Parameter] public bool Active { get; set; } = false;
+        /// <summary>
+        /// Show avatar placeholder
+        /// </summary>
+        [Parameter] public SkeletonAvatarProps Avatar { get; set; } = null;
         [Parameter] public RenderFragment ChildContent { get; set; } = null;
-        [Parameter] public bool loading { get; set; } = false;
-        [Parameter] public SkeletonParagraphProps paragraph { get; set; } = new SkeletonParagraphProps();
-        [Parameter] public bool round { get; set; } = false;
-        [Parameter] public SkeletonTitleProps title { get; set; } = new SkeletonTitleProps();
+        /// <summary>
+        /// Display the skeleton when true
+        /// </summary>
+        [Parameter] public bool Loading { get; set; } = false;
+        /// <summary>
+        /// Show paragraph placeholder
+        /// </summary>
+        [Parameter] public SkeletonParagraphProps Paragraph { get; set; } = new SkeletonParagraphProps();
+        /// <summary>
+        /// Show paragraph and title radius when true
+        /// </summary>
+        [Parameter] public bool Round { get; set; } = false;
+        /// <summary>
+        /// Show title placeholder
+        /// </summary>
+        [Parameter] public SkeletonTitleProps Title { get; set; } = new SkeletonTitleProps();
     }
 }

@@ -2,24 +2,24 @@
 @inherits AntComponent
 
 
-@if (loading || ChildContent == null)
+@if (Loading || ChildContent == null)
 {
     <div class="@classes">
-        @if (avatar != null)
+        @if (Avatar != null)
         {
             <div class="ant-skeleton-header">
                 <span class="@avatarClasses"></span>
             </div>
         }
         <div class="ant-skeleton-content">
-            @if (title != null)
+            @if (Title != null)
             {
                 <h3 class="@titleClasses" style="@titleStyles"></h3>
             }
             <ul class="ant-skeleton-paragraph">
-                @for (var row = 0; row < paragraph.rows; row++)
+                @for (var row = 0; row < Paragraph.Rows; row++)
                 {
-                    if (row == paragraph.rows - 1)
+                    if (row == Paragraph.Rows - 1)
                     {
                         <li style="width: 61%;"></li>
                     }
@@ -34,7 +34,10 @@
 }
 else
 {
-    <div>
+<div>
+    @if (@ChildContent != null)
+    {
         @ChildContent
-    </div>
+    }
+</div>
 }

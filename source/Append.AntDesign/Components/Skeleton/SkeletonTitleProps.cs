@@ -3,8 +3,8 @@
     public class SkeletonTitleProps
     {
         /// <summary>
-        /// Width in percents
+        /// Set the width of title in percent
         /// </summary>
-        public int width { get; set; } = 38;
+        public int Width { get; set; } = 38;
     }
 }

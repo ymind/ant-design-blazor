@@ -16,48 +16,48 @@ Skeleton
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| active | Show animation effect | boolean | false |
-| avatar | Show avatar placeholder | boolean | false |
-| loading | Display the skeleton when true | boolean | - |
-| paragraph | Show paragraph placeholder | boolean | true |
-| title | Show title placeholder | boolean | true |
-| round | Show paragraph and title radius when true | boolean | false |
+| Active | Show animation effect | boolean | false |
+| Avatar | Show avatar placeholder | SkeletonAvatarProps | false |
+| Loading | Display the skeleton when true | boolean | - |
+| Paragraph | Show paragraph placeholder | SkeletonParagraphProps | true |
+| Round | Show paragraph and title radius when true | boolean | false |
+| Title | Show title placeholder | SkeletonTitleProps | true |
 
 SkeletonAvatarProps
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| active | Show animation effect, only valid when used avatar independently | boolean | false |
-| size | Set the size of avatar | AvatarSize | - |
-| shape | Set the shape of avatar | AvatarShape | - |
+| Active | Show animation effect, only valid when used avatar independently | boolean | false |
+| Size | Set the size of avatar | SkeletonAvatarSize | - |
+| Shape | Set the shape of avatar | SkeletonAvatarShape | - |
 
 SkeletonTitleProps
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| width | Set the width of title | integer &#124; Array<integer> | 68% |
+| Width | Set the width of title in percent | integer | 68% |
  
 SkeletonParagraphProps
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| rows | Set the row count of paragraph | integer | 3 |
-| width | Set the width of paragraph. When width is an Array, it can set the width of each row. Otherwise only set the last row width | integer &#124; Array<integer> | 68% |
+| Rows | Set the row count of paragraph | integer | 3 |
+| Width | Set the width of paragraphs. Set the width of each row, if only one sets the last row width | Array<integer> | 68% |
 
 SkeletonButtonProps
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| active | Show animation effect | boolean | false |
-| size | Set the size of button | ButtonSize | - |
-| shape | Set the shape of button | ButtonShape | - |
+| Active | Show animation effect | boolean | false |
+| Size | Set the size of button | ButtonSize | - |
+| Shape | Set the shape of button | ButtonShape | - |
 
 SkeletonInputProps
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| active | Show animation effect | boolean | false |
-| size | Set the size of input | InputSize | - |
+| Active | Show animation effect | boolean | false |
+| Size | Set the size of input | InputSize | - |
 
 
 ## FAQ

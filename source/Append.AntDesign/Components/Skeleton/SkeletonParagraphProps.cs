@@ -2,7 +2,13 @@
 {
     public class SkeletonParagraphProps
     {
-        public bool active { get; set; } = false;
-        public int rows { get; set; } = 3;
+        /// <summary>
+        /// Set the row count of paragraph
+        /// </summary>
+        public int Rows { get; set; } = 3;
+        /// <summary>
+        /// Set the width of paragraphs. Set the width of each row, if only one sets the last row width
+        /// </summary>
+        public int[] Width { get; set; } = { 68 };
     }
 }

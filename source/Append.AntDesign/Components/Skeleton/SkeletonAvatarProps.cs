@@ -2,8 +2,17 @@
 {
     public class SkeletonAvatarProps
     {
-        public bool active { get; set; } = false;
-        public SkeletonAvatarSize size { get; set; } = SkeletonAvatarSize.Default;
-        public SkeletonAvatarShape shape { get; set; } = SkeletonAvatarShape.Default;
+        /// <summary>
+        /// Show animation effect, only valid when used avatar independently
+        /// </summary>
+        public bool Active { get; set; } = false;
+        /// <summary>
+        /// Set the size of avatar
+        /// </summary>
+        public SkeletonAvatarSize Size { get; set; } = SkeletonAvatarSize.Default;
+        /// <summary>
+        /// Set the shape of avatar
+        /// </summary>
+        public SkeletonAvatarShape Shape { get; set; } = SkeletonAvatarShape.Default;
     }
 }
