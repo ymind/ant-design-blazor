@@ -1,4 +1,6 @@
 ﻿@using System.Globalization
+@using System.Security.Cryptography
+@using System.Text.RegularExpressions
 <Codebox Title="Customize">
     <Description>
         <p>
@@ -6,11 +8,8 @@
         </p>
     </Description>
     <Demo>
-        <input type="number" step=".01" value=@size @oninput=@((ChangeEventArgs __e) => SetSize(__e.Value?.ToString())) />
-        <br />
-        <label>@message</label>
-        <br />
-        <Space Size="@size">
+        <InputNumber Type="number" Min=0 Max=100 Step=0.5 DecimalSeparator="." DefaultValue="8" Size=@InputSize.Large Value="@size" Parser="@Parser" />
+        <Space Size="@($"{size}".Replace(',','.'))">
             <SpaceItem>
                 <Button Type="@ButtonType.Primary" Label="Primary" />
             </SpaceItem>
@@ -28,25 +27,12 @@
 </Codebox>
 
 @code{
-    string size = "8";
-    string message = string.Empty;
-    readonly CultureInfo customCulture = (CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+    double size = 8;
 
-    void SetSize(string value)
+    private double Parser(string value)
     {
-        customCulture.NumberFormat.NumberDecimalSeparator = ".";
-        if (!decimal.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out _))
-        {
-            if (!string.IsNullOrWhiteSpace(value))
-            {
-                message = "Input only accepts integer or decimal values.";
-                StateHasChanged();
-            }
-            return;
-        }
-
-        size = value?.Replace(',', '.');
-        message = string.Empty;
+        size = double.Parse(value.Replace('.', ','));
         StateHasChanged();
+        return size;
     }
 }
