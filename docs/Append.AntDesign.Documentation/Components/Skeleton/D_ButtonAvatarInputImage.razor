@@ -1,0 +1,121 @@
+﻿<Codebox Title="Button/Avatar/Input/Image">
+    <Description>
+        <p>
+            Skeleton Button, Avatar, Input and Image.
+        </p>
+    </Description>
+    <Demo>
+        <div>
+            <SkeletonButton Active="this.isLoading" Size="this.buttonSize" Shape="this.buttonShape" />
+            <SkeletonButton Active="this.isLoading" Size="this.buttonSize" Shape="this.buttonShape" />
+            <SkeletonAvatar Active="this.isLoading" Size="this.avatarSize" Shape="this.avatarShape" />
+            <SkeletonInput Active="this.isLoading" Size="this.inputSize" Style="width: 200px;" />
+        </div>
+        <br />
+        <div>
+            <SkeletonImage />
+        </div>
+        <Divider />
+        <form layout="inline" style="margin: 16px 0;">
+            <div style="display: inline-block;">
+                <div>Active</div>
+                <Switch Checked="this.isLoading" OnClick="this.HandleActiveChange" />
+            </div>
+            <div style="display: inline-block;">
+                <div>Size</div>
+                <RadioGroup DefaultValue="default" OnChange="this.HandleSizeChange">
+                    <RadioButton Value="default">Default</RadioButton>
+                    <RadioButton Value="large">Large</RadioButton>
+                    <RadioButton Value="small">Small</RadioButton>
+                </RadioGroup>
+            </div>
+            <div style="display: inline-block;">
+                <div>Button Shape</div>
+                <RadioGroup DefaultValue="round" OnChange="this.HandleButtonShapeChange">
+                    <RadioButton Value="default">Default</RadioButton>
+                    <RadioButton Value="round">Round</RadioButton>
+                    <RadioButton Value="circle">Circle</RadioButton>
+                </RadioGroup>
+            </div>
+            <div style="display: inline-block;">
+                <div>Avatar Shape</div>
+                <RadioGroup DefaultValue="square" OnChange="this.HandleAvatarShapeChange">
+                    <RadioButton Value="square">Square</RadioButton>
+                    <RadioButton Value="circle">Circle</RadioButton>
+                </RadioGroup>
+            </div>
+        </form>
+    </Demo>
+</Codebox>
+@code {
+    private bool isLoading { get; set; } = false;
+    private SkeletonButtonSize buttonSize { get; set; } = SkeletonButtonSize.Default;
+    private SkeletonButtonShape buttonShape { get; set; } = SkeletonButtonShape.Round;
+    private SkeletonAvatarSize avatarSize { get; set; } = SkeletonAvatarSize.Default;
+    private SkeletonAvatarShape avatarShape { get; set; } = SkeletonAvatarShape.Square;
+    private SkeletonInputSize inputSize { get; set; } = SkeletonInputSize.Default;
+
+    private void HandleActiveChange()
+    {
+        this.isLoading = !this.isLoading;
+    }
+
+    private void HandleSizeChange(string value)
+    {
+        switch (value)
+        {
+            case "default":
+                this.buttonSize = SkeletonButtonSize.Default;
+                this.avatarSize = SkeletonAvatarSize.Default;
+                this.inputSize = SkeletonInputSize.Default;
+                break;
+            case "large":
+                this.buttonSize = SkeletonButtonSize.Large;
+                this.avatarSize = SkeletonAvatarSize.Large;
+                this.inputSize = SkeletonInputSize.Large;
+                break;
+            case "small":
+                this.buttonSize = SkeletonButtonSize.Small;
+                this.avatarSize = SkeletonAvatarSize.Small;
+                this.inputSize = SkeletonInputSize.Small;
+                break;
+        }
+    }
+    private void HandleButtonShapeChange(string value)
+    {
+        switch (value)
+        {
+            case "default":
+                this.buttonShape = SkeletonButtonShape.Default;
+                break;
+            case "round":
+                this.buttonShape = SkeletonButtonShape.Round;
+                break;
+            case "circle":
+                this.buttonShape = SkeletonButtonShape.Circle;
+                break;
+        }
+    }
+    private void HandleAvatarShapeChange(string value)
+    {
+        switch (value)
+        {
+            case "square":
+                this.avatarShape = SkeletonAvatarShape.Square;
+                break;
+            case "circle":
+                this.avatarShape = SkeletonAvatarShape.Circle;
+                break;
+        }
+    }
+
+    private async Task HandleLoading()
+    {
+        this.isLoading = true;
+
+        StateHasChanged();
+
+        await Task.Delay(3000);
+        this.isLoading = false;
+    }
+}
