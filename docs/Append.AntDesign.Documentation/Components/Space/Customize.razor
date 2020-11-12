@@ -1,0 +1,52 @@
+﻿@using System.Globalization
+<Codebox Title="Customize">
+    <Description>
+        <p>
+            Custom space
+        </p>
+    </Description>
+    <Demo>
+        <input type="number" step=".01" value=@size @oninput=@((ChangeEventArgs __e) => SetSize(__e.Value?.ToString())) />
+        <br />
+        <label>@message</label>
+        <br />
+        <Space Size="@size">
+            <SpaceItem>
+                <Button Type="@ButtonType.Primary" Label="Primary" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Default" Label="Default" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Dashed" Label="Dashed" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Link" Label="Link" />
+            </SpaceItem>
+        </Space>
+    </Demo>
+</Codebox>
+
+@code{
+    string size = "8";
+    string message = string.Empty;
+    readonly CultureInfo customCulture = (CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+
+    void SetSize(string value)
+    {
+        customCulture.NumberFormat.NumberDecimalSeparator = ".";
+        if (!decimal.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out _))
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                message = "Input only accepts integer or decimal values.";
+                StateHasChanged();
+            }
+            return;
+        }
+
+        size = value?.Replace(',', '.');
+        message = string.Empty;
+        StateHasChanged();
+    }
+}
