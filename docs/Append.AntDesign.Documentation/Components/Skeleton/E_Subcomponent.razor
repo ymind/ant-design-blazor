@@ -1,0 +1,33 @@
+﻿<Codebox Title="Contains sub component">
+    <Description>
+        <p>
+            Skeleton contains sub component.
+        </p>
+    </Description>
+    <Demo>
+        <div class="article">
+            <Skeleton Loading="this.isLoading">
+                <div>
+                    <h4>Ant Design, a design language</h4>
+                    <p>
+                        We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.
+                    </p>
+                </div>
+            </Skeleton>
+            <Button OnClick="this.HandleLoading" Disabled="this.isLoading" Label="Show Skeleton" />
+        </div>
+    </Demo>
+</Codebox>
+@code {
+    private bool isLoading { get; set; } = false;
+
+    private async Task HandleLoading()
+    {
+        this.isLoading = true;
+
+        StateHasChanged();
+
+        await Task.Delay(3000);
+        this.isLoading = false;
+    }
+}

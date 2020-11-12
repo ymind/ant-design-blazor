@@ -1,0 +1,341 @@
+﻿@inherits TestComponentBase
+
+<SnapshotTest Description="Basic">
+    <TestInput>
+        <Skeleton />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton">
+            <div class="ant-skeleton-content">
+                <h3 class="ant-skeleton-title" style="width: 38%;"></h3>
+                <ul class="ant-skeleton-paragraph">
+                    <li></li>
+                    <li></li>
+                    <li style="width: 61%;"></li>
+                </ul>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Complex">
+    <TestInput>
+        <Skeleton Title="new SkeletonTitleProps { Width = 50 }" Avatar="new SkeletonAvatarProps()" Paragraph="new SkeletonParagraphProps { Rows = 4 }" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton">
+            <div class="ant-skeleton-header">
+                <span class="ant-skeleton-avatar ant-skeleton-avatar-circle"></span>
+            </div>
+            <div class="ant-skeleton-content">
+                <h3 class="ant-skeleton-title" style="width: 50%;"></h3>
+                <ul class="ant-skeleton-paragraph">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li style="width: 61%;"></li>
+                </ul>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Active">
+    <TestInput>
+        <Skeleton Active />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton ant-skeleton-active">
+            <div class="ant-skeleton-content">
+                <h3 class="ant-skeleton-title" style="width: 38%;"></h3>
+                <ul class="ant-skeleton-paragraph">
+                    <li></li>
+                    <li></li>
+                    <li style="width: 61%;"></li>
+                </ul>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Button Large Round">
+    <TestInput>
+        <SkeletonButton Active="true" Size="SkeletonButtonSize.Large" Shape="SkeletonButtonShape.Round" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton ant-skeleton-element ant-skeleton-active">
+            <span class="ant-skeleton-button ant-skeleton-button-lg ant-skeleton-button-round"></span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Button Small Circle">
+    <TestInput>
+        <SkeletonButton Active="false" Size="SkeletonButtonSize.Small" Shape="SkeletonButtonShape.Circle" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton ant-skeleton-element">
+            <span class="ant-skeleton-button ant-skeleton-button-sm ant-skeleton-button-circle"></span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Avatar Large Square">
+    <TestInput>
+        <SkeletonAvatar Active="true" Size="SkeletonAvatarSize.Large" Shape="SkeletonAvatarShape.Square" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton ant-skeleton-element ant-skeleton-active">
+            <span class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"></span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Avatar Small Circle">
+    <TestInput>
+        <SkeletonAvatar Active="false" Size="SkeletonAvatarSize.Small" Shape="SkeletonAvatarShape.Circle" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton ant-skeleton-element">
+            <span class="ant-skeleton-avatar ant-skeleton-avatar-sm ant-skeleton-avatar-circle"></span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Input Small">
+    <TestInput>
+        <SkeletonInput Active="false" Size="SkeletonInputSize.Small" Style="width: 200px;" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton ant-skeleton-element">
+            <span class="ant-skeleton-input ant-skeleton-input-sm" style="width: 200px;"></span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Input Large">
+    <TestInput>
+        <SkeletonInput Active="false" Size="SkeletonInputSize.Large" Style="width: 200px;" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-skeleton ant-skeleton-element">
+            <span class="ant-skeleton-input ant-skeleton-input-lg" style="width: 200px;"></span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="List Active Vertical Large">
+    <TestInput>
+        @code
+        {
+            private class ListData
+            {
+                public string href { get; set; }
+                public string title { get; set; }
+                public string avatar { get; set; }
+                public string description { get; set; }
+                public string content { get; set; }
+            }
+
+            private List<ListData> _listData { get; set; } = new List<ListData>(new ListData[]
+{
+        new ListData
+        {
+            href = "https://ant.design",
+            title = "ant design part 0",
+            avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+            content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+        },
+        new ListData
+        {
+            href = "https://ant.design",
+            title = "ant design part 1",
+            avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+            content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+        },
+        new ListData
+        {
+            href = "https://ant.design",
+            title = "ant design part 2",
+            avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+            content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+        }
+});
+
+            private RenderFragment RenderItem(ListData data)
+            {
+                RenderFragment avatar =@<Avatar ImageSource="@data.avatar" Size="Size.Small" />;
+                RenderFragment title = @<a href="@data.href">@data.title</a>;
+                RenderFragment description = @<span>@data.description</span>;
+                RenderFragment content = @<div>@data.content</div>;
+
+                return @<ListItem>
+                    <Skeleton Loading="true" Paragraph="new SkeletonParagraphProps {Rows = 2}" />
+                </ListItem>;
+                }
+        }
+        <AntList ItemLayout="ItemLayout.Vertical" Size="AntListSize.Large" RenderItem="this.RenderItem" DataSource="this._listData" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-list ant-list-vertical ant-list-lg ant-list-split">
+            <div class="ant-spin-nested-loading">
+                <div class="ant-spin-container">
+                    <ul class="ant-list-items">
+                        <li class="ant-list-item">
+                            <div class="ant-skeleton ant-skeleton-active">
+                                <div class="ant-skeleton-content">
+                                    <h3 class="ant-skeleton-title" style="width: 38%;"></h3>
+                                    <ul class="ant-skeleton-paragraph">
+                                        <li></li>
+                                        <li style="width: 61%;"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ant-list-item">
+                            <div class="ant-skeleton ant-skeleton-active">
+                                <div class="ant-skeleton-content">
+                                    <h3 class="ant-skeleton-title" style="width: 38%;"></h3>
+                                    <ul class="ant-skeleton-paragraph">
+                                        <li></li>
+                                        <li style="width: 61%;"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ant-list-item">
+                            <div class="ant-skeleton ant-skeleton-active">
+                                <div class="ant-skeleton-content">
+                                    <h3 class="ant-skeleton-title" style="width: 38%;"></h3>
+                                    <ul class="ant-skeleton-paragraph">
+                                        <li></li>
+                                        <li style="width: 61%;"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="List Inactive Vertical Large">
+    <TestInput>
+        @code
+        {
+
+            private List<ListData> _listData2 { get; set; } = new List<ListData>(new ListData[]
+            {
+                new ListData
+                {
+                    href = "https://ant.design",
+                    title = "ant design part 0",
+                    avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+                    description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+                    content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+                },
+                new ListData
+                {
+                    href = "https://ant.design",
+                    title = "ant design part 1",
+                    avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+                    description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+                    content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+                },
+                new ListData
+                {
+                    href = "https://ant.design",
+                    title = "ant design part 2",
+                    avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+                    description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+                    content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+                }
+});
+
+            private RenderFragment RenderItem2(ListData data)
+            {
+                RenderFragment avatar =@<Avatar ImageSource="@data.avatar" Size="Size.Small" />;
+                RenderFragment title = @<a href="@data.href">@data.title</a>;
+                RenderFragment description = @<span>@data.description</span>;
+                RenderFragment content = @<div>@data.content</div>;
+
+return @<ListItem>
+    <ListItemMeta Avatar="avatar"
+                  Title="title"
+                  Description="description" />
+    @content
+</ListItem>;
+}
+        }
+        <AntList ItemLayout="ItemLayout.Vertical" Size="AntListSize.Large" RenderItem="this.RenderItem2" DataSource="this._listData2" />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-list ant-list-vertical ant-list-lg ant-list-split">
+            <div class="ant-spin-nested-loading">
+                <div class="ant-spin-container">
+                    <ul class="ant-list-items">
+                        <li class="ant-list-item">
+                            <div class="ant-list-item-meta">
+                                <div class="ant-list-item-meta-avatar">
+                                    <span class="ant-avatar ant-avatar-circle ant-avatar-sm ant-avatar-image">
+                                        <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+                                    </span>
+                                </div>
+                                <div class="ant-list-item-meta-content">
+                                    <h4 class="ant-list-item-meta-title">
+                                        <a href="https://ant.design">ant design part 0</a>
+                                    </h4>
+                                    <div class="ant-list-item-meta-description">
+                                        <span>Ant Design, a design language for background applications, is refined by Ant UED Team.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.</div>
+                        </li>
+                        <li class="ant-list-item">
+                            <div class="ant-list-item-meta">
+                                <div class="ant-list-item-meta-avatar">
+                                    <span class="ant-avatar ant-avatar-circle ant-avatar-sm ant-avatar-image">
+                                        <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+                                    </span>
+                                </div>
+                                <div class="ant-list-item-meta-content">
+                                    <h4 class="ant-list-item-meta-title">
+                                        <a href="https://ant.design">ant design part 1</a>
+                                    </h4>
+                                    <div class="ant-list-item-meta-description">
+                                        <span>Ant Design, a design language for background applications, is refined by Ant UED Team.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.</div>
+                        </li>
+                        <li class="ant-list-item">
+                            <div class="ant-list-item-meta">
+                                <div class="ant-list-item-meta-avatar">
+                                    <span class="ant-avatar ant-avatar-circle ant-avatar-sm ant-avatar-image">
+                                        <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+                                    </span>
+                                </div>
+                                <div class="ant-list-item-meta-content">
+                                    <h4 class="ant-list-item-meta-title">
+                                        <a href="https://ant.design">ant design part 2</a>
+                                    </h4>
+                                    <div class="ant-list-item-meta-description">
+                                        <span>Ant Design, a design language for background applications, is refined by Ant UED Team.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
