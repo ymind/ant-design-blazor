@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -9,7 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\source\Append.AntDesign\Append.AntDesign.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Condition="'$(OS)' == 'Windows_NT'" Include="BuildWebCompiler" Version="1.12.405" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.3" />
@@ -18,7 +18,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.3" />
     <PackageReference Include="System.Text.Json" Version="4.7.1" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Folder Include="Docs\" />
     <Folder Include="wwwroot\css\" />
@@ -31,10 +31,10 @@
       <Test Include="$(ProjectDir)wwwroot\examples\%(RecursiveDir)\*.razor" />
       <Readme Include="$(SolutionDir)README.md" />
     </ItemGroup>
-    
+
     <Message Text="Copying the README.md file to the wwwroot/docs folder." Importance="High" />
     <Copy SourceFiles="@(Readme)" DestinationFolder="$(ProjectDir)\wwwroot\docs" />
-    
+
     <Message Text="Copying the example files to the wwwroot/examples folder." Importance="High" />
     <Copy SourceFiles="@(Examples)" DestinationFiles="$(ProjectDir)wwwroot\examples\%(RecursiveDir)%(Filename).md" />
   </Target>

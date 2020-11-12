@@ -1,7 +1,7 @@
 ﻿@inherits TestComponentBase
 
 <SnapshotTest Description="Basic"
-              Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+              Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Alert Type="AlertType.Success">
             <Message>Success Text</Message>
@@ -16,7 +16,7 @@
 </SnapshotTest>
 
 <SnapshotTest Description="Closable"
-              Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+              Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Alert Type="AlertType.Warning" Closable>
             <Message>Warning Text</Message>
@@ -57,7 +57,7 @@
 </SnapshotTest>
 
 <SnapshotTest Description="Customize Close Text"
-              Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+              Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <Alert Type="AlertType.Info" Closable>
             <Message>Info Text</Message>

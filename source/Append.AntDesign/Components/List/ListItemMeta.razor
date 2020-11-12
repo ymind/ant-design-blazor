@@ -1,0 +1,25 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<div class="ant-list-item-meta">
+    @if (Avatar != null)
+    {
+        <div class="ant-list-item-meta-avatar">
+            @Avatar
+        </div>
+    }
+    <div class="ant-list-item-meta-content">
+        @if (Title != null)
+        {
+            <h4 class="ant-list-item-meta-title">
+                @Title
+            </h4>
+        }
+        @if (Description != null)
+        {
+            <div class="ant-list-item-meta-description">
+                @Description
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,223 @@
+﻿@inherits TestComponentBase
+
+<SnapshotTest Description="Basic">
+    <TestInput>
+        <Spin />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-spin ant-spin-spinning">
+            <span class="ant-spin-dot ant-spin-dot-spin">
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+            </span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Customized Description">
+    <TestInput>
+        <Spin Label="Loading..." />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-spin ant-spin-spinning ant-spin-show-text">
+            <span class="ant-spin-dot ant-spin-dot-spin">
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+            </span>
+            <div class="ant-spin-text">Loading...</div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="With ChildContent">
+    <TestInput>
+        <Spin>
+            <p>Some Child Content here.</p>
+        </Spin>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-spin-nested-loading">
+            <div>
+                <div class="ant-spin ant-spin-spinning">
+                    <span class="ant-spin-dot ant-spin-dot-spin">
+                        <i class="ant-spin-dot-item"></i>
+                        <i class="ant-spin-dot-item"></i>
+                        <i class="ant-spin-dot-item"></i>
+                        <i class="ant-spin-dot-item"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="ant-spin-container ant-spin-blur">
+                <p>Some Child Content here.</p>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Inside a container">
+    <TestInput>
+        <div class="example">
+            <Spin />
+        </div>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="example">
+            <div class="ant-spin ant-spin-spinning">
+                <span class="ant-spin-dot ant-spin-dot-spin">
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                </span>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Delay">
+    <TestInput>
+        <div>
+            <Spin Spinning=loading Delay=500>
+                <Alert Type=AlertType.Info>
+                    <Message>Alert message title</Message>
+                    <Description>Further details about the context of this alert.</Description>
+                </Alert>
+            </Spin>
+            <div style="margin-top: 16px">
+                Loading state：
+                <Switch OnClick=toggle />
+            </div>
+        </div>
+        @code {
+            bool loading = false;
+
+            private void toggle(bool value)
+            {
+                loading = value;
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-spin-nested-loading">
+                <div class="ant-spin-container">
+                    <div class="ant-alert ant-alert-info ant-alert-with-description ant-alert-no-icon">
+                        <span class="ant-alert-message">Alert message title</span>
+                        <span class="ant-alert-description">Further details about the context of this alert.</span>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 16px;">
+                Loading state：
+                <button diff:ignore type="button" role="switch" aria-checked="false" class="ant-switch" ant-click-animating="true">
+                    <div class="ant-switch-handle"></div>
+                    <span class="ant-switch-inner"></span>
+                </button>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Embedded">
+    <TestInput>
+        <div>
+            <Spin Label="Loading..." Spinning=thisLoading>
+                <Alert Type=AlertType.Info>
+                    <Message>Alert message title</Message>
+                    <Description>Further details about the context of this alert.</Description>
+                </Alert>
+            </Spin>
+            <div style="margin-top: 16px">
+                Loading state：
+                <Switch OnClick=thisToggle />
+            </div>
+        </div>
+        @code {
+            private bool thisLoading = false;
+
+            private void thisToggle(bool value)
+            {
+                thisLoading = value;
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-spin-nested-loading">
+                <div class="ant-spin-container">
+                    <div class="ant-alert ant-alert-info ant-alert-with-description ant-alert-no-icon">
+                        <span class="ant-alert-message">Alert message title</span>
+                        <span class="ant-alert-description">Further details about the context of this alert.</span>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 16px;">
+                Loading state：
+                <button diff:ignore type="button" role="switch" aria-checked="false" class="ant-switch" ant-click-animating="true">
+                    <div class="ant-switch-handle"></div>
+                    <span class="ant-switch-inner"></span>
+                </button>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Size">
+    <TestInput>
+        <div class="ant-space ant-space-horizontal ant-space-align-center">
+            <Spin Size=SpinSize.Small />
+            <Spin />
+            <Spin Size=SpinSize.Large />
+        </div>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-space ant-space-horizontal ant-space-align-center">
+            <div class="ant-spin ant-spin-sm ant-spin-spinning">
+                <span class="ant-spin-dot ant-spin-dot-spin">
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                </span>
+            </div>
+            <div class="ant-spin ant-spin-spinning">
+                <span class="ant-spin-dot ant-spin-dot-spin">
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                </span>
+            </div>
+            <div class="ant-spin ant-spin-lg ant-spin-spinning">
+                <span class="ant-spin-dot ant-spin-dot-spin">
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                    <i class="ant-spin-dot-item"></i>
+                </span>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Indicator" Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Spin>
+            <Indicator>
+                <Icon Type=IconType.Outlined.Loading class="ant-spin-dot" style="font-size: 24px;"/>
+            </Indicator>
+        </Spin>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-spin ant-spin-spinning">
+            <span role="img" aria-label="loading" class="anticon anticon-loading ant-spin-dot" style="font-size: 24px;">
+                <svg diff:ignore>
+                </svg>
+            </span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
