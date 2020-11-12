@@ -1,0 +1,38 @@
+﻿<Codebox Title="Size">
+    <Description>
+        <p>
+            Space options
+        </p>
+    </Description>
+    <Demo>
+        <RadioGroup @bind-Value=@size OnChange="e=> setSize(e)" TValue="string">
+            <Radio Value="@("small")">Small</Radio>
+            <Radio Value="@("middle")">Middle</Radio>
+            <Radio Value="@("large")">Large</Radio>
+        </RadioGroup>
+        <br />
+        <br />
+        <Space Size=@size>
+            <SpaceItem>
+                <Button Type="@ButtonType.Primary" Label="Primary" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Default" Label="Default" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Dashed" Label="Dashed" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Link" Label="Link" />
+            </SpaceItem>
+        </Space>
+    </Demo>
+</Codebox>
+@code {
+    string size = "small";
+    void setSize(string value)
+    {
+        size = value;
+        StateHasChanged();
+    }
+}
