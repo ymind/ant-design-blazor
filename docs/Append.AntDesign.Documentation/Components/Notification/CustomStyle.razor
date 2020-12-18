@@ -1,0 +1,23 @@
+﻿@inject NotificationService NotificationService
+
+<Codebox Title="Customized style">
+    <Description>
+        <p>
+            The <code>Style</code> and <code>ClassName</code> parameters are available to customize a notification.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+    </Demo>
+</Codebox>
+@code{
+    private void showNotification()
+    {
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetDuration(200)
+                                        .SetMessage("Notification Title")
+                                        .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
+                                        .SetStyle($"width: 600px; margin-left: {335 - 600}px;")
+                                        .Build());
+    }
+}

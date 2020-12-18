@@ -1,0 +1,38 @@
+﻿@using System.Globalization
+@using System.Security.Cryptography
+@using System.Text.RegularExpressions
+<Codebox Title="Customize">
+    <Description>
+        <p>
+            Custom space
+        </p>
+    </Description>
+    <Demo>
+        <InputNumber Type="number" Min=0 Max=100 Step=0.5 DecimalSeparator="." DefaultValue="8" Size=@InputSize.Large Value="@size" Parser="@Parser" />
+        <Space Size="@($"{size}".Replace(',','.'))">
+            <SpaceItem>
+                <Button Type="@ButtonType.Primary" Label="Primary" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Default" Label="Default" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Dashed" Label="Dashed" />
+            </SpaceItem>
+            <SpaceItem>
+                <Button Type="@ButtonType.Link" Label="Link" />
+            </SpaceItem>
+        </Space>
+    </Demo>
+</Codebox>
+
+@code{
+    double size = 8;
+
+    private double Parser(string value)
+    {
+        size = double.Parse(value.Replace('.', ','));
+        StateHasChanged();
+        return size;
+    }
+}

@@ -1,0 +1,25 @@
+﻿<Codebox Title="Customized Dot Style">
+    <Description>
+        <p>
+            You can customize the display for Steps with progress dot style.
+        </p>
+    </Description>
+    <Demo>
+        <Steps Current=1>
+            <ProgressDot>
+                <Tooltip>
+                    <Title>This is an customized dot.</Title>
+                    <ChildContent>
+                        <Append.AntDesign.Components.Icon Type=IconType.Filled.Cloud />
+                    </ChildContent>
+                </Tooltip>
+            </ProgressDot>
+            <ChildContent>
+                <Step Title="Finished" Description="You can hover on the icon." />
+                <Step Title="In Progress" Description="You can hover on the icon." />
+                <Step Title="Waiting" Description="You can hover on the icon." />
+                <Step Title="Waiting" Description="You can hover on the icon." />
+            </ChildContent>
+        </Steps>
+    </Demo>
+</Codebox>

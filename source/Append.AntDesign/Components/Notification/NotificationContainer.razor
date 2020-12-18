@@ -1,0 +1,17 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+@foreach (var layourParams in positionalCssClasses)
+{
+    <div class="@layourParams.cssClass" style="@notificationContainerStyles(layourParams.placement)">
+        <span>
+            @foreach (var notificationItem in notificationService.Notifications.GetNotificationsByPlacementType(layourParams.placement))
+            {
+                <Notification @key="notificationItem.Options.Guid"
+                              Options="notificationItem.Options"
+                              class="@notificationItem.Options.ClassName"
+                              style="@notificationItem.Options.Style" />
+            }
+        </span>
+    </div>
+}

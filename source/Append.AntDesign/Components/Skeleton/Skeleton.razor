@@ -1,0 +1,50 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+
+@if (Loading || ChildContent == null)
+{
+    <div class="@classes">
+        @if (Avatar != null)
+        {
+        <div class="ant-skeleton-header">
+            <span class="@avatarClasses"></span>
+        </div>
+        }
+        <div class="ant-skeleton-content">
+            @if (Title != null)
+            {
+                <h3 class="@titleClasses" style="@titleStyles"></h3>
+            }
+            <ul class="ant-skeleton-paragraph">
+                @for (var row = 0; row < Paragraph.Rows; row++)
+                {
+                    if (Paragraph.Width.Length > 1 && row < Paragraph.Width.Length)
+                    {
+                        <li style="width: @Paragraph.Width[row]"></li>
+                    }
+                    else
+                    {
+                        if (row == Paragraph.Rows - 1)
+                        {
+                            <li style="width: 61%;"></li>
+                        }
+                        else
+                        {
+                            <li></li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+<div>
+    @if (@ChildContent != null)
+    {
+        @ChildContent
+    }
+</div>
+}
