@@ -27,7 +27,8 @@
     </ExpectedOutput>
 </SnapshotTest>
 
-<SnapshotTest Description="CustomizeSpace">
+<SnapshotTest Description="CustomizeSpace"
+              Setup="(SnapshotTest test) => test.Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
         <InputNumber Type="number" Min=0 Max=100 Step=0.5 DecimalSeparator="." DefaultValue="8" Size=@InputSize.Large Value="12" />
         <Space Size="12">
