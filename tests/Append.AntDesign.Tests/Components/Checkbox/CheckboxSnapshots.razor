@@ -1,0 +1,163 @@
+﻿@inherits TestComponentBase
+
+<SnapshotTest Description="Basic">
+    <TestInput>
+        <Checkbox>Checkbox</Checkbox>
+    </TestInput>
+    <ExpectedOutput>
+        <label class="ant-checkbox-wrapper">
+            <span class="ant-checkbox">
+                <input type="checkbox" class="ant-checkbox-input">
+                <span class="ant-checkbox-inner"></span>
+            </span>
+            <span>Checkbox</span>
+        </label>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Disabled">
+    <TestInput>
+        <Checkbox Disabled />
+    </TestInput>
+    <ExpectedOutput>
+        <label class="ant-checkbox-wrapper ant-checkbox-wrapper-disabled">
+            <span class="ant-checkbox ant-checkbox-disabled">
+                <input type="checkbox" class="ant-checkbox-input">
+                <span class="ant-checkbox-inner"></span>
+            </span>
+        </label>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Indeterminate">
+    <TestInput>
+        <Checkbox Indeterminate />
+    </TestInput>
+    <ExpectedOutput>
+        <label class="ant-checkbox-wrapper">
+            <span class="ant-checkbox ant-checkbox-indeterminate">
+                <input type="checkbox" class="ant-checkbox-input">
+                <span class="ant-checkbox-inner"></span>
+            </span>
+        </label>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Options">
+    <TestInput>
+        <CheckboxGroup Options="options1" DefaultValue="@(new List<string>(new string[] { apple }))" />
+        @code{
+            private static readonly string apple = "Apple";
+            private static readonly string pear = "Pear";
+            private static readonly string orange = "Orange";
+
+            List<CheckboxGroupOption> options1 = new List<CheckboxGroupOption>(new CheckboxGroupOption[] { CheckboxGroupOption.Create(apple), CheckboxGroupOption.Create(pear), CheckboxGroupOption.Create(orange) });
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-checkbox-group">
+            <label class="ant-checkbox-wrapper ant-checkbox-wrapper-checked">
+                <span class="ant-checkbox ant-checkbox-checked">
+                    <input type="checkbox" class="ant-checkbox-input" value="Apple">
+                    <span class="ant-checkbox-inner"></span>
+                </span>
+                <span>
+                    Apple
+                </span>
+            </label>
+            <label class="ant-checkbox-wrapper">
+                <span class="ant-checkbox">
+                    <input type="checkbox" class="ant-checkbox-input" value="Pear">
+                    <span class="ant-checkbox-inner"></span>
+                </span>
+                <span>
+                    Pear
+                </span>
+            </label>
+            <label class="ant-checkbox-wrapper">
+                <span class="ant-checkbox">
+                    <input type="checkbox" class="ant-checkbox-input" value="Orange">
+                    <span class="ant-checkbox-inner"></span>
+                </span>
+                <span>
+                    Orange
+                </span>
+            </label>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Grid">
+    <TestInput>
+        <CheckboxGroup style="width:100%">
+            <Row>
+                <Column Span="8">
+                    <Checkbox Value="A">A</Checkbox>
+                </Column>
+                <Column Span="8">
+                    <Checkbox Value="B">B</Checkbox>
+                </Column>
+                <Column Span="8">
+                    <Checkbox Value="C">C</Checkbox>
+                </Column>
+                <Column Span="8">
+                    <Checkbox Value="D">D</Checkbox>
+                </Column>
+                <Column Span="8">
+                    <Checkbox Value="E">E</Checkbox>
+                </Column>
+            </Row>
+        </CheckboxGroup>
+    </TestInput>
+    <ExpectedOutput>
+        <div style="width:100%" class="ant-checkbox-group">
+            <div class="ant-row">
+                <div class="ant-col ant-col-8">
+                    <label class="ant-checkbox-wrapper">
+                        <span class="ant-checkbox">
+                            <input type="checkbox" class="ant-checkbox-input" value="A">
+                            <span class="ant-checkbox-inner"></span>
+                        </span>
+                        <span>A</span>
+                    </label>
+                </div>
+                <div class="ant-col ant-col-8">
+                    <label class="ant-checkbox-wrapper">
+                        <span class="ant-checkbox">
+                            <input type="checkbox" class="ant-checkbox-input" value="B">
+                            <span class="ant-checkbox-inner"></span>
+                        </span>
+                        <span>B</span>
+                    </label>
+                </div>
+                <div class="ant-col ant-col-8">
+                    <label class="ant-checkbox-wrapper">
+                        <span class="ant-checkbox">
+                            <input type="checkbox" class="ant-checkbox-input" value="C">
+                            <span class="ant-checkbox-inner"></span>
+                        </span>
+                        <span>C</span>
+                    </label>
+                </div>
+                <div class="ant-col ant-col-8">
+                    <label class="ant-checkbox-wrapper">
+                        <span class="ant-checkbox">
+                            <input type="checkbox" class="ant-checkbox-input" value="D">
+                            <span class="ant-checkbox-inner"></span>
+                        </span>
+                        <span>D</span>
+                    </label>
+                </div>
+                <div class="ant-col ant-col-8">
+                    <label class="ant-checkbox-wrapper">
+                        <span class="ant-checkbox">
+                            <input type="checkbox" class="ant-checkbox-input" value="E">
+                            <span class="ant-checkbox-inner"></span>
+                        </span>
+                        <span>E</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>

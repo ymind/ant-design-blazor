@@ -1,0 +1,22 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<label class="@wrapperClasses" @onclick="OnCheckboxClicked">
+
+    <span @attributes="@Attributes" class="@classes">
+        @if (CheckboxNameDefined)
+        {
+            <input name="@CheckboxGroup.Name" type="checkbox" class="ant-checkbox-input" value="@Value">
+        }
+        else
+        {
+            <input type="checkbox" class="ant-checkbox-input" value="@Value">
+        }
+        <span class="ant-checkbox-inner"></span>
+    </span>
+
+    @if (ChildContent != null)
+    {
+        <span>@ChildContent</span>
+    }
+</label>

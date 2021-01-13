@@ -1,0 +1,23 @@
+﻿@inject NotificationService NotificationService
+
+<Codebox Title="Customized Icon">
+    <Description>
+        <p>
+            The <code>Icon</code> can be customized to any <code>RenderFragment</code> .
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+    </Demo>
+</Codebox>
+@code{
+    private void showNotification()
+    {
+        NotificationService.Open(NotificationConfigOptions.Builder()
+        .SetMessage("Notification Title")
+        .SetDuration(200)
+        .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
+        .SetIcon(@<Icon Type="IconType.Outlined.Smile" style="color:#108ee9"></Icon>)
+.Build());
+}
+}

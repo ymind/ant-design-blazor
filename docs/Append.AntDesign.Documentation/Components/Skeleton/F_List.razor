@@ -1,0 +1,113 @@
+﻿<Codebox Title="List">
+    <Description>
+        <p>
+            Use skeleton in list component.
+        </p>
+    </Description>
+    <Demo>
+        <div>
+            <Switch Checked="!this.IsLoading" OnClick="() => this.IsLoading = !this.IsLoading"></Switch>
+
+            <AntList ItemLayout="ItemLayout.Vertical" Size="AntListSize.Large" RenderItem="this.RenderItem" DataSource="this._listData" />
+        </div>
+    </Demo>
+</Codebox>
+
+@code {
+    private class ListData
+    {
+        public string href { get; set; }
+        public string title { get; set; }
+        public string avatar { get; set; }
+        public string description { get; set; }
+        public string content { get; set; }
+        public string logo { get; set; }
+    }
+
+    private List<ListData> _listData { get; set; } = new List<ListData>(new ListData[]
+    {
+        new ListData
+        {
+            href = "https://ant.design",
+            title = "ant design part 0",
+            avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+            content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+            logo = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+        },
+        new ListData
+        {
+            href = "https://ant.design",
+            title = "ant design part 1",
+            avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+            content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+            logo = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+        },
+        new ListData
+        {
+            href = "https://ant.design",
+            title = "ant design part 2",
+            avatar = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            description = "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+            content = "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+            logo = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+        }
+            });
+    private bool IsLoading { get; set; } = true;
+
+    private RenderFragment RenderItem(ListData data)
+    {
+        RenderFragment avatar =@<Avatar ImageSource="@data.avatar" Size="Size.Small" />;
+        RenderFragment title = @<a href="@data.href">@data.title</a>;
+        RenderFragment description = @<span>@data.description</span>;
+        RenderFragment content = @<div>@data.content</div>;
+        RenderFragment extraImage = @<img src="@data.logo" alt="logo" width="272" />;
+        // refactor actions when ant-space is finished
+        RenderFragment action1 = @<div class="ant-space ant-space-horizontal ant-space-align-center">
+                                                    <div class="ant-space-item" style="margin-right: 8px;">
+                                                        <Icon Type="IconType.Outlined.Star"></Icon>
+                                                    </div>
+                                                    <div class="ant-space-item">156</div>
+                                                </div>;
+        RenderFragment action2 = @<div class="ant-space ant-space-horizontal ant-space-align-center">
+                                                    <div class="ant-space-item" style="margin-right: 8px;">
+                                                        <Icon Type="IconType.Outlined.Like"></Icon>
+                                                    </div>
+                                                    <div class="ant-space-item">158</div>
+                                                </div>;
+        RenderFragment action3 = @<div class="ant-space ant-space-horizontal ant-space-align-center">
+                                                    <div class="ant-space-item" style="margin-right: 8px;">
+                                                        <Icon Type="IconType.Outlined.Message"></Icon>
+                                                    </div>
+                                                    <div class="ant-space-item">2</div>
+                                                </div>;
+
+        var actions = new List<RenderFragment>(new []{action1, action2, action3});
+
+
+        if (this.IsLoading)
+        {
+            return @<ListItem>
+                <Skeleton
+                    Avatar="new SkeletonAvatarProps { Active = true,
+                                                        Shape = SkeletonAvatarShape.Circle,
+                                                        Size = SkeletonAvatarSize.Large
+                            }"
+                    Loading="true"
+                    Paragraph="new SkeletonParagraphProps {Rows = 2, Width = new int[] { 100, 100 } }"
+                />
+            </ListItem>;
+        }
+        else
+        {
+            return @<ListItem Actions="actions"
+                              Extra="extraImage">
+                <ListItemMeta Avatar="avatar"
+                              Title="title"
+                              Description="description" />
+                @content
+            </ListItem>;
+        }
+    }
+}

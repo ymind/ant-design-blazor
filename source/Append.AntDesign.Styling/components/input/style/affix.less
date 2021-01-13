@@ -7,21 +7,6 @@
   &-affix-wrapper {
     .input();
     display: inline-flex;
-    height: @input-height-base;
-    padding-top: 0;
-    padding-bottom: 0;
-
-    &-lg {
-      height: @input-height-lg;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-    &-sm {
-      height: @input-height-sm;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
 
     &-disabled {
       .@{ant-prefix}-input[disabled] {
@@ -30,8 +15,7 @@
     }
 
     > input.@{ant-prefix}-input {
-      padding-right: 0;
-      padding-left: 0;
+      padding: 0;
       border: none;
       outline: none;
 

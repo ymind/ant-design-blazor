@@ -1,0 +1,55 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+@typeparam TItem
+
+<div class="@classes">
+    @if (Header != null)
+    {
+        <div class="ant-list-header">
+            @Header
+        </div>
+    }
+
+    <CascadingValue Value="this">
+        @if (Loading)
+        {
+            <div class="ant-spin-nested-loading">
+                <div>
+                    <Spin />
+                </div>
+                <div class="ant-spin-container ant-spin-blur">
+                    <ul class="ant-list-items">
+                        @foreach (var item in _internalDataSource)
+                        {
+                            @item
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="ant-spin-nested-loading">
+                <div class="ant-spin-container">
+                    <ul class="ant-list-items">
+                        @foreach (var item in _internalDataSource)
+                        {
+                            @item
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </CascadingValue>
+
+    @if (Footer != null)
+    {
+        <div class="ant-list-footer">
+            <div>@Footer</div>
+        </div>
+    }
+    @if (LoadMore != null)
+    {
+        @LoadMore
+    }
+</div>

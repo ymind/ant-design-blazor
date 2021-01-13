@@ -1,0 +1,38 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<CascadingValue Value="this">
+    @ChildContent
+</CascadingValue>
+
+<div class="@classesFirstDiv">
+    <div role="tablist" class="ant-tabs-nav">
+        <div class="ant-tabs-nav-wrap">
+            <div class="ant-tabs-nav-list" style="transform: translate(0px, 0px);">
+                @foreach (var item in _tabPanes)
+                {
+                    @item.GetTabNav();
+                }
+                <div class="ant-tabs-ink-bar ant-tabs-ink-bar-animated" style="@inkBarStyle"></div>
+            </div>
+        </div>
+        <div class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden">
+            <button type="button" class="ant-tabs-nav-more" tabindex="-1" aria-hidden="true" aria-haspopup="listbox" aria-controls="rc-tabs-0-more-popup" id="rc-tabs-0-more" aria-expanded="false" style="visibility: hidden; order: 1;"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></button>
+        </div>
+
+        @if (TabBarExtraContent != null)
+        {
+            <div class="ant-tabs-extra-content">
+                @TabBarExtraContent
+            </div>
+        }
+    </div>
+    <div class="ant-tabs-content-holder">
+        <div class="ant-tabs-content ant-tabs-content-top">
+            @foreach (var item in _tabPanes)
+            {
+                @item.GetTabConcent();
+            }
+        </div>
+    </div>
+</div>
